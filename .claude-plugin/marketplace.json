@@ -1,5 +1,5 @@
 {
-  "name": "kassi-claude-op-plugin-wrapper",
+  "name": "kassi-claude-plugins",
   "owner": {
     "name": "Karsten Silkenbäumer",
     "url": "https://github.com/kassi"
@@ -7,15 +7,14 @@
   "plugins": [
     {
       "name": "op-plugin-wrapper",
-      "source": "./",
+      "source": "./plugins/op-plugin-wrapper/",
       "description": "Automatically wraps CLI commands with 'op plugin run --' for 1Password credential injection in Claude Code.",
-      "version": "1.0.0",
       "author": {
         "name": "Karsten Silkenbäumer",
         "url": "https://github.com/kassi"
       },
-      "homepage": "https://github.com/kassi/claude-op-plugin-wrapper",
-      "repository": "https://github.com/kassi/claude-op-plugin-wrapper",
+      "homepage": "https://github.com/kassi/claude-plugins",
+      "repository": "https://github.com/kassi/claude-plugins",
       "license": "MIT",
       "keywords": ["1password", "op", "credentials", "hooks"]
     }

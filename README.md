@@ -1,97 +1,78 @@
-# Claude Code 1Password Plugin Wrapper
+# Claude Code Plugins Marketplace
+
+A collection of plugins for Claude Code that extend functionality with additional capabilities.
+
+## Overview
+
+This marketplace provides a curated set of plugins for Claude Code. Each plugin adds specific functionality and can be installed independently.
+
+## Available Plugins
+
+### 1. [op-plugin-wrapper](plugins/op-plugin-wrapper/)
 
 Automatically wraps CLI commands with `op plugin run --` for 1Password credential injection in Claude Code.
 
-## What It Does
+**Features:**
+- Automatic detection of 1Password CLI plugins
+- Seamless command wrapping without manual intervention
+- Support for multiple 1Password plugins (gh, aws, terraform, etc.)
+- SessionStart and PreToolUse hooks for transparent integration
 
-When you have 1Password CLI plugins configured (like `gh`, `aws`, `terraform`), this plugin automatically wraps those commands with `op plugin run --` so credentials are injected without manual intervention.
+**Installation:**
+```bash
+claude plugin marketplace add kassi/claude-plugins
+claude plugin install op-plugin-wrapper@kassi-claude-plugins
+```
 
-**Before:** Claude runs `gh pr list`
-**After:** Claude runs `op plugin run -- gh pr list`
+[View full documentation →](plugins/op-plugin-wrapper/README.md)
+
+---
+
+## Directory Structure
+
+```
+claude-plugins/                          # Marketplace root
+├── .claude-plugin/
+│   └── marketplace.json                 # Marketplace catalog
+├── README.md                            # This file
+└── plugins/
+    └── op-plugin-wrapper/               # Individual plugins
+        ├── .claude-plugin/              # Plugin metadata
+        ├── hooks/                       # Hook implementations
+        ├── skills/                      # Claude Code skills
+        ├── config/                      # Runtime configuration (gitignored)
+        └── README.md                    # Plugin-specific documentation
+```
+
+## Adding New Plugins
+
+To add a new plugin to this marketplace:
+
+1. Create a new directory under `plugins/`
+2. Structure it following the pattern of existing plugins
+3. Add an entry to `.claude-plugin/marketplace.json` in the `plugins` array with:
+   - `name`: Plugin identifier
+   - `source`: Path to plugin (e.g., `"./plugins/new-plugin/`)
+   - `description`: Brief description
+   - `version`: Semantic version
+   - `author`: Plugin author information
+   - `license`: License type
+   - Additional metadata as needed
+4. Create a `README.md` in the plugin directory with documentation
+5. Implement plugin functionality (hooks, skills, etc.)
 
 ## Installation
 
-```bash
-claude plugin marketplace add kassi/claude-op-plugin-wrapper
-claude plugin install op-plugin-wrapper@kassi-claude-op-plugin-wrapper
-```
-
-No further configuration is needed. On first session start, the plugin automatically reads your `~/.config/op/plugins.sh` and creates `config/op-commands.json` with your installed 1Password plugins.
-
-## Configuration
-
-### Automatic Setup
-
-On first session start, the plugin detects your 1Password plugins automatically from `~/.config/op/plugins.sh`. You don't need to do anything.
-
-### Adding New Plugins
-
-After adding a new 1Password CLI plugin, refresh the command list:
-
-```
-/sync-op-plugins
-```
-
-This reads `~/.config/op/plugins.sh` and updates `config/op-commands.json`.
-
-## How It Works
-
-1. **SessionStart Hook:** On session start, if `config/op-commands.json` doesn't exist, it is created automatically from `~/.config/op/plugins.sh`
-2. **PreToolUse Hook:** Before any Bash command runs, the hook checks if the command starts with a configured CLI tool
-3. **Automatic Wrapping:** If matched, the command is wrapped with `op plugin run --`
-4. **Pass-through:** Commands already wrapped, not in the list, or containing shell metacharacters pass through unchanged
-
-## Requirements
-
-- [1Password CLI](https://developer.1password.com/docs/cli/) (`op`)
-- 1Password CLI plugins configured in `~/.config/op/plugins.sh`
-- Claude Code with plugin support
-
-## File Structure
-
-```
-claude-op-plugin-wrapper/
-├── .claude-plugin/
-│   └── plugin.json             # Plugin metadata
-├── commands/
-│   └── sync-op-plugins.md      # /sync-op-plugins command
-├── hooks/
-│   ├── hooks.json              # Hook configuration
-│   ├── session-start.sh        # SessionStart hook: auto-creates op-commands.json
-│   └── wrap-op-commands.sh     # PreToolUse hook: wraps commands
-├── skills/
-│   └── op-cli-integration/
-│       └── SKILL.md            # Skill documentation
-├── config/                     # Gitignored — generated at runtime
-└── README.md
-```
-
-## Troubleshooting
-
-### Commands not being wrapped
-
-1. Check that the command is in `config/op-commands.json` (auto-created on first session start)
-2. Run `/sync-op-plugins` to re-sync from your 1Password config
-3. Start a new Claude Code session
-
-### config/op-commands.json not created
-
-If the file wasn't created on session start, check that `~/.config/op/plugins.sh` exists and contains alias lines in the format:
+To install plugins from this marketplace:
 
 ```bash
-alias gh="op plugin run -- gh"
-```
+# Add the marketplace
+claude plugin marketplace add kassi/claude-plugins
 
-Then run `/sync-op-plugins` to create it manually.
-
-### Debug mode
-
-Run Claude Code with debug logging to see hook execution:
-
-```bash
-claude --debug
+# Install a specific plugin
+claude plugin install <plugin-name>@kassi-claude-plugins
 ```
 
 ## License
 
-MIT
+Each plugin maintains its own license. See individual plugin directories for details.
