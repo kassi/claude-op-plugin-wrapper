@@ -1,5 +1,5 @@
 {
-  "name": "kassi-claude-plugins",
+  "name": "kassi-personal-claude-plugins",
   "owner": {
     "name": "Karsten Silkenbäumer",
     "url": "https://github.com/kassi"
@@ -13,8 +13,8 @@
         "name": "Karsten Silkenbäumer",
         "url": "https://github.com/kassi"
       },
-      "homepage": "https://github.com/kassi/claude-plugins",
-      "repository": "https://github.com/kassi/claude-plugins",
+      "homepage": "https://github.com/kassi/personal-claude-plugins",
+      "repository": "https://github.com/kassi/personal-claude-plugins",
       "license": "MIT",
       "keywords": ["1password", "op", "credentials", "hooks"]
     }

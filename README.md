@@ -20,8 +20,8 @@ Automatically wraps CLI commands with `op plugin run --` for 1Password credentia
 
 **Installation:**
 ```bash
-claude plugin marketplace add kassi/claude-plugins
-claude plugin install op-plugin-wrapper@kassi-claude-plugins
+claude plugin marketplace add kassi/personal-claude-plugins
+claude plugin install op-plugin-wrapper@kassi-personal-claude-plugins
 ```
 
 [View full documentation →](plugins/op-plugin-wrapper/README.md)
@@ -31,7 +31,7 @@ claude plugin install op-plugin-wrapper@kassi-claude-plugins
 ## Directory Structure
 
 ```
-claude-plugins/                          # Marketplace root
+personal-claude-plugins/                 # Marketplace root
 ├── .claude-plugin/
 │   └── marketplace.json                 # Marketplace catalog
 ├── README.md                            # This file
@@ -67,10 +67,10 @@ To install plugins from this marketplace:
 
 ```bash
 # Add the marketplace
-claude plugin marketplace add kassi/claude-plugins
+claude plugin marketplace add kassi/personal-claude-plugins
 
 # Install a specific plugin
-claude plugin install <plugin-name>@kassi-claude-plugins
+claude plugin install <plugin-name>@kassi-personal-claude-plugins
 ```
 
 ## License

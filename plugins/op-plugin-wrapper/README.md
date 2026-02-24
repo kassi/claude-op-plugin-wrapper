@@ -12,8 +12,8 @@ When you have 1Password CLI plugins configured (like `gh`, `aws`, `terraform`), 
 ## Installation
 
 ```bash
-claude plugin marketplace add kassi/claude-plugins
-claude plugin install op-plugin-wrapper@kassi-claude-plugins
+claude plugin marketplace add kassi/personal-claude-plugins
+claude plugin install op-plugin-wrapper@kassi-personal-claude-plugins
 ```
 
 No further configuration is needed. On first session start, the plugin automatically reads your `~/.config/op/plugins.sh` and creates `config/op-commands.json` with your installed 1Password plugins.
