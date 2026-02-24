@@ -1,0 +1,8 @@
+{
+  "name": "conventional-git",
+  "description": "Git workflow skills: conventional commits, automatic message generation, git init support, and optional commitizen config.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Karsten Silkenbäumer"
+  }
+}

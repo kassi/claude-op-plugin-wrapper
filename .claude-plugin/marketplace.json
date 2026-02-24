@@ -17,6 +17,19 @@
       "repository": "https://github.com/kassi/personal-claude-plugins",
       "license": "MIT",
       "keywords": ["1password", "op", "credentials", "hooks"]
+    },
+    {
+      "name": "conventional-git",
+      "source": "./plugins/conventional-git/",
+      "description": "Git workflow skills: conventional commits with auto-generated messages, git init support, and optional commitizen config.",
+      "author": {
+        "name": "Karsten Silkenbäumer",
+        "url": "https://github.com/kassi"
+      },
+      "homepage": "https://github.com/kassi/personal-claude-plugins",
+      "repository": "https://github.com/kassi/personal-claude-plugins",
+      "license": "MIT",
+      "keywords": ["git", "commit", "conventional-commits", "commitizen", "conventional-git"]
     }
   ]
 }
